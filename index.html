@@ -134,27 +134,6 @@ function calculateAll(){const tbody=document.querySelector("#leaderboard tbody")
 function exportLeaderboard(){calculateAll(); let csv="Puesto,Nombre,Cedula,Total,Grupos,F32,F16,F8,Semi,TercerCuarto,Finalistas,Cuarto,Tercero,Subcampeon,Campeon,Goleador,Portero\n"; const rows=participants.map(p=>({p,score:scoreParticipant(p)})).sort((a,b)=>b.score.total-a.score.total); rows.forEach((r,i)=>{const s=r.score,p=r.p; csv += `${i+1},"${p.name||""}","${p.id||""}",${s.total},${s.groups},${s.f32},${s.f16},${s.f8},${s.semi},${s.thirdMatch},${s.finalists},${s.fourth},${s.third},${s.runner},${s.champion},${s.scorer},${s.keeper}\n`;}); const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"}); const url=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=url; a.download="ranking_quiniela_mundial_2026.csv"; a.click();}
 initOfficialMatches(); loadOfficial(); loadParticipants(); calculateAll();
 
- function exportParticipantCSV() {
-
-const nombre = document.getElementById("nombre").value;
-const cedula = document.getElementById("cedula").value;
-
-let csv = "Nombre,Cedula\n";
-csv += ${nombre},${cedula}\n;
-
-const blob = new Blob([csv], {
-type:'text/csv;charset=utf-8;'
-});
-
-const link = document.createElement("a");
-
-link.href = URL.createObjectURL(blob);
-
-link.download = pronostico_${nombre}.csv;
-
-link.click();
-
-}
-</script>
+ </script>
 </body>
 </html>
