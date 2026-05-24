@@ -146,6 +146,10 @@ document.getElementById("nombre").value;
 const cedula =
 document.getElementById("cedula").value;
 
+const resultados = localStorage.getItem("madre_oficial_mundial2026");
+
+const partidos = localStorage.getItem("officialMatches");
+
 fetch("https://script.google.com/macros/s/AKfycbyQG4kGfCIuhdtu0p8O9wZjBDYmn-YUWtNfqvcjHDOLjAcXh-GEmFBQeyvt_hfZIIOO/exec", {
 
 method:"POST",
@@ -154,7 +158,9 @@ mode:"no-cors",
 
 body:JSON.stringify({
 nombre:nombre,
-cedula:cedula
+cedula:cedula,
+resultados: resultados,
+partidos: partidos
 })
 
 })
