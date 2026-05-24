@@ -133,7 +133,6 @@ function scoreParticipant(p){
 function calculateAll(){const tbody=document.querySelector("#leaderboard tbody"); tbody.innerHTML=""; const rows=participants.map(p=>({p,score:scoreParticipant(p)})).sort((a,b)=>b.score.total-a.score.total); rows.forEach((r,i)=>{const s=r.score,p=r.p; const tr=document.createElement("tr"); tr.innerHTML=`<td>${i+1}</td><td>${p.name||""}</td><td>${p.id||""}</td><td><b>${s.total}</b></td><td>${s.groups}</td><td>${s.f32}</td><td>${s.f16}</td><td>${s.f8}</td><td>${s.semi}</td><td>${s.thirdMatch}</td><td>${s.finalists}</td><td>${s.fourth}</td><td>${s.third}</td><td>${s.runner}</td><td>${s.champion}</td><td>${s.scorer}</td><td>${s.keeper}</td>`; tbody.appendChild(tr);});}
 function exportLeaderboard(){calculateAll(); let csv="Puesto,Nombre,Cedula,Total,Grupos,F32,F16,F8,Semi,TercerCuarto,Finalistas,Cuarto,Tercero,Subcampeon,Campeon,Goleador,Portero\n"; const rows=participants.map(p=>({p,score:scoreParticipant(p)})).sort((a,b)=>b.score.total-a.score.total); rows.forEach((r,i)=>{const s=r.score,p=r.p; csv += `${i+1},"${p.name||""}","${p.id||""}",${s.total},${s.groups},${s.f32},${s.f16},${s.f8},${s.semi},${s.thirdMatch},${s.finalists},${s.fourth},${s.third},${s.runner},${s.champion},${s.scorer},${s.keeper}\n`;}); const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"}); const url=URL.createObjectURL(blob); const a=document.createElement("a"); a.href=url; a.download="ranking_quiniela_mundial_2026.csv"; a.click();}
 initOfficialMatches(); loadOfficial(); loadParticipants(); calculateAll();
-
  </script>
 </body>
 </html>
