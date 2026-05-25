@@ -147,7 +147,11 @@ const cedula =
 document.getElementById("cedula").value;
 
 const resultados = localStorage.getItem("madre_oficial_mundial2026");
-
+const campeon = document.getElementById("campeon")?.value || "";
+const subcampeon = document.getElementById("subcampeon")?.value || "";
+const goleador = document.getElementById("goleador")?.value || "";
+const portero = document.getElementById("portero")?.value || "";
+ 
 fetch("https://script.google.com/macros/s/AKfycbwlH2QEIDJZONXxOniIWu60q95bKYdL5gWBYiaI7dL7w-1gLVFAe2pD8t1pEJr2vU1m/exec", {
 
 method:"POST",
@@ -155,9 +159,13 @@ method:"POST",
 mode:"no-cors",
 
 body:JSON.stringify({
-nombre:nombre,
-cedula:cedula,
-resultados:resultados
+  nombre:nombre,
+  cedula:cedula,
+  resultados:resultados,
+  campeon:campeon,
+  subcampeon:subcampeon,
+  goleador:goleador,
+  portero:portero
 })
 
 })
